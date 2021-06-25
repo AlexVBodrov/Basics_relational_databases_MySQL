@@ -26,3 +26,14 @@ SELECT
 FROM flights AS f LEFT JOIN  cities AS c
 ON c.label=f.`FROM` 
 ;
+
+-- добавил вариант без английских столбцов
+
+SELECT 
+	name AS "Отправление",
+	(SELECT name FROM cities AS c where c.label=f.`to`) AS "Прибытие"
+	 -- `from`,
+	 -- `to`
+FROM flights AS f INNER JOIN  cities AS c
+ON c.label=f.`FROM` 
+;
